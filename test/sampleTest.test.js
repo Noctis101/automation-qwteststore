@@ -1,5 +1,5 @@
 /**
- * NOTE: To run specifically, npm test -- --<reporter> ./test/<testFileName>
+ * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<testFileName>
 **/
 
 homePage = require('../pages/home.page')
