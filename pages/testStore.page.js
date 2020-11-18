@@ -4,13 +4,22 @@
 
 class Home {
 
-    menuButton(index) { return $(`div.right.menu a:nth-child(${index})`) }
+    menuButton(index) { return $(`.right.menu a:nth-child(${index})`) }
     get email() { return $('#email') }
     get password() { return $('#password') }
     get loginButton() { return $('.ui.segment button')}
     get emailRequired() { return $('//p[text()="Email address is required"]') }
     get passwordRequired() { return $('//p[text()="Password is required"]') }
     get discreteError() { return $('//p[text()="Please check your login details and try again."]') }
+    get homeButton() { return $('//a[text()="QW Test Store"]') }
+    product(index) { return $(`.ui.stackable.two.cards a:nth-child(${index})`) }
+    get addToCart() { return $('.ui.action.input button')}
+    productFromCart(index) { return $(`.item .content .header a:nth-child(${index})`)}
+    get descriptionInCart() { return $('.item .content .description') }
+    get priceInCart() { return $('.item .content .meta')}
+    
+    get removeOne() { return $('.item .content button')}
+    get removeAll() { return $$('.item .content button') }
 
     /**
      * Clicks on one of the right menu buttons based on the index provided
@@ -71,6 +80,55 @@ class Home {
     getDiscreteError() {
         this.discreteError.waitForDisplayed();
         return this.discreteError.getText();
+    }
+
+    /**
+     * Click the home button
+     */
+    clickHomeButton() {
+        this.homeButton.waitForDisplayed();
+        this.homeButton.click();
+    }
+
+    /**
+     * Goes to product page based on the index given
+     * @param {Number} index the index of the element 
+     */
+    clickProduct(index) {
+        this.product(index).waitForDisplayed();
+        this.product(index).click();
+    }
+
+    /**
+     * Adds item to Cart
+     */
+    addItem() {
+        this.addToCart.waitForDisplayed();
+        this.addToCart.click();
+    }
+
+    /**
+     * Goes to product page based on the index given
+     * @param {Number} index the index of the element 
+     */
+    clickProductFromCart(index) {
+        this.productFromCart(index).waitForDisplayed();
+        this.productFromCart(index).click();
+    }
+
+    /**
+     * Removes an item from Cart
+     */
+    removeItem() {
+        this.removeOne.waitForDisplayed();
+        this.removeOne.click();
+    }
+
+    removeAllItems() {
+        this.removeAll.waitForDisplayed();
+        this.removeAll.forEach(element => {
+            element.click()
+        });
     }
 }
 
