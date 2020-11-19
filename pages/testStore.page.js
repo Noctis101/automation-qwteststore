@@ -20,8 +20,8 @@ class Home {
     productFromCart(index) { return $(`.item .content .header a:nth-child(${index})`)}
     get descriptionInCart() { return $('.item .content .description') }
     get priceInCart() { return $('.item .content .meta')}
-    
     get checkoutButton() { return $('.ui.large.clearing.segment button') }
+    get modal() { return $('iframe.stripe_checkout_app') }
     get checkoutEmail() { return $('//input [@ placeholder="Email"]') }
     get checkoutName() { return $('//input [@ placeholder="Name"]') }
     get street() { return $('//input [@ placeholder="Street"]') }
