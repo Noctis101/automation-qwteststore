@@ -24,6 +24,8 @@ describe('User Checkout Test Case', function() {
         testStore.clickProduct(3)
         testStore.addItem()
         testStore.checkout()
+        testStore.modal.waitForDisplayed()
+        browser.switchToFrame(testStore.modal)
         testStore.enterCheckoutEmail(paymentInfo.email)
         testStore.enterCheckoutName(paymentInfo.name)
         testStore.enterStreet(paymentInfo.street)

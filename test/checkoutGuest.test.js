@@ -4,6 +4,7 @@
 
 testStore = require('../pages/testStore.page');
 loginData = require('../data/loginData');
+paymentInfo = require('../data/paymentInfo');
 
 describe('Guest Checkout Test Case', function() {
 
@@ -19,6 +20,8 @@ describe('Guest Checkout Test Case', function() {
         testStore.addItem()
         testStore.clickMenuButton(3)
         testStore.checkout()
+        testStore.modal.waitForDisplayed()
+        browser.switchToFrame(testStore.modal)
         testStore.enterCheckoutEmail(paymentInfo.email)
         testStore.enterCheckoutName(paymentInfo.name)
         testStore.enterStreet(paymentInfo.street)
