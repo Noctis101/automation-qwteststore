@@ -2,33 +2,33 @@
  * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<testFileName>
 **/
 
-testStore = require('../pages/testStore.page');
-loginData = require('../data/loginData');
+let homePage = require('../../pages/home.page');
+let cart = require('../../pages/cart.page');
 
 describe('Add To Cart - Guest Test Cases', function() {
 
     it('should add one (1) item to Cart', () => {
         browser.url(`${browser.options.baseUrl}`)
-        testStore.clickProduct(1)
-        testStore.addItem()
+        homePage.clickProduct(1)
+        homePage.addItem()
     });
 
     it('should multiple items to Cart', () => {
         browser.url(`${browser.options.baseUrl}`)
-        testStore.clickProduct(2)
-        testStore.addItem()
-        testStore.clickHomeButton()
-        testStore.clickProduct(3)
-        testStore.addItem()
+        homePage.clickProduct(2)
+        homePage.addItem()
+        homePage.clickHomeButton()
+        homePage.clickProduct(3)
+        homePage.addItem()
     });
 
     it('should add one (1) item to Cart multiple times', () => {
         browser.url(`${browser.options.baseUrl}`)
-        testStore.clickProduct(4)
-        testStore.addItem()
-        testStore.clickHomeButton()
-        testStore.clickProduct(4)
-        testStore.addItem()
+        homePage.clickProduct(4)
+        homePage.addItem()
+        homePage.clickHomeButton()
+        homePage.clickProduct(4)
+        homePage.addItem()
     });
 
     it('should remove one (1) item from Cart', () => {
@@ -38,8 +38,8 @@ describe('Add To Cart - Guest Test Cases', function() {
          * uncomment when running this only
         */
 
-        testStore.clickMenuButton(3)
-        testStore.removeItem()
+        homePage.clickMenuButton(3)
+        cart.removeItem()
     });
 
     it('should remove all items from Cart', () => {
@@ -49,7 +49,7 @@ describe('Add To Cart - Guest Test Cases', function() {
          * uncomment when running this only
         */
 
-        testStore.clickMenuButton(3)
-        testStore.removeAllItems()
+        homePage.clickMenuButton(3)
+        cart.removeAllItems()
     });
 });
