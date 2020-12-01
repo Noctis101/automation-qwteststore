@@ -31,6 +31,15 @@ class Cart {
     }
 
     /**
+     * Retrieves the name of the product at the index given
+     * @param {Number} index the index of the element 
+     */
+    getProductName(index) {
+        this.productFromCart(index).waitForDisplayed();
+        this.productFromCart(index).getText();
+    }
+
+    /**
      * Removes an item from Cart
      */
     removeItem() {

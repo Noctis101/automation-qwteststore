@@ -1,5 +1,5 @@
 /**
- * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<testFileName>
+ * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<appropriate path to file>
 **/
 
 let homePage = require('../../pages/home.page');
@@ -22,12 +22,19 @@ describe('Add To Cart - Guest Test Cases', function() {
         homePage.addItem()
     });
 
-    it('should add one (1) item to Cart multiple times', () => {
+    it.skip('should add one (1) item to Cart multiple times', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickProduct(4)
         homePage.addItem()
         homePage.clickHomeButton()
         homePage.clickProduct(4)
+        homePage.addItem()
+    });
+
+    it('should add one (1) item to Cart multiple times', () => {
+        browser.url(`${browser.options.baseUrl}`)
+        homePage.clickProduct(4)
+        homePage.modifyQuantity(2)
         homePage.addItem()
     });
 

@@ -1,5 +1,5 @@
 /**
- * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<testFileName>
+ * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<appropriate path to file>
 **/
 
 let homePage = require('../../pages/home.page');
@@ -9,7 +9,7 @@ let cart = require('../../pages/cart.page');
 
 describe('Add To Cart - User Test Cases', function() {
 
-    it('should add one (1) item to Cart', () => {
+    it.only('should add one (1) item to Cart', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(2)
         loginPage.enterEmail(loginData.email)
@@ -18,6 +18,8 @@ describe('Add To Cart - User Test Cases', function() {
         homePage.clickHomeButton()
         homePage.clickProduct(1)
         homePage.addItem()
+        homePage.clickMenuButton(3)
+        console.log(cart.getProductName(1))
     });
 
     it('should multiple items to Cart', () => {
@@ -41,6 +43,8 @@ describe('Add To Cart - User Test Cases', function() {
     it('should go to product link from cart', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
+        cart.getProductName(1)
+        let productName = cart.clickProductFromCart(1)
         cart.clickProductFromCart(1)
     });
 
@@ -61,7 +65,13 @@ describe('Add To Cart - User Test Cases', function() {
     it('should logout, sign in and see same items in cart', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
-        cart.clickProductFromCart(1)
+        
+        homePage.clickMenuButton(2)
+        loginPage.enterEmail(loginData.email)
+        loginPage.enterPassword(loginData.password)
+        loginPage.clickLoginButton()
+        homePage.clickMenuButton(3)
+
     });
 
     it('should remove one (1) item from Cart', () => {

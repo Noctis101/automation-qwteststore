@@ -1,1 +1,1 @@
-# automation-qwteststore
+# This project serves as the solution required by the QualityWorks Bench Training Programme

@@ -1,5 +1,5 @@
 /**
- * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<testFileName>
+ * NOTE: To run specifically, ENV=<environment> npm run test -- --<reporter> ./test/<appropriate path to file>
 **/
 
 let loginPage = require('../../pages/login.page');

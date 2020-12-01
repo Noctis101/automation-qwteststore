@@ -7,6 +7,7 @@ class Home {
     menuButton(index) { return $(`.right.menu a:nth-child(${index})`) }
     get homeButton() { return $('//a[text()="QW Test Store"]') }
     product(index) { return $(`.ui.stackable.two.cards a:nth-child(${index})`) }
+    get quantity() { return $('//input [@ placeholder="Quantity"]') }
     get addToCart() { return $('.ui.action.input button')}
 
     /**
@@ -33,6 +34,17 @@ class Home {
     clickProduct(index) {
         this.product(index).waitForDisplayed();
         this.product(index).click();
+    }
+
+    /**
+     * Easier way of adding more of the same item
+     * @param {Number} amount the quantity we want of the item
+     */
+    modifyQuantity(amount) {
+        this.quantity.waitForDisplayed();
+        this.quantity.click();
+        this.quantity.clearValue();
+        this.quantity.setValue(amount);
     }
 
     /**
