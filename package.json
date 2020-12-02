@@ -18,6 +18,7 @@
     "chai": "^4.2.0",
     "chai-webdriverio": "^1.0.0",
     "local-runner": "^0.1.1-alpha",
+    "selenium-standalone": "^6.22.2",
     "wdio-mochawesome-reporter": "^4.0.0",
     "webdriverio": "^6.7.3"
   },
