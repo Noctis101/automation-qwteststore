@@ -6,6 +6,7 @@ let homePage = require('../../pages/home.page');
 let loginPage = require('../../pages/login.page');
 let loginData = require('../../data/loginData');
 let cart = require('../../pages/cart.page');
+let product = require('../../pages/product.page');
 
 describe('Add To Cart - User Test Cases', function() {
 
@@ -18,8 +19,6 @@ describe('Add To Cart - User Test Cases', function() {
         homePage.clickHomeButton()
         homePage.clickProduct(1)
         homePage.addItem()
-        homePage.clickMenuButton(3)
-        console.log(cart.getProductName(1))
     });
 
     it('should multiple items to Cart', () => {
@@ -40,29 +39,34 @@ describe('Add To Cart - User Test Cases', function() {
         homePage.addItem()
     });
 
-    it('should go to product link from cart', () => {
+    it('should go to product link from cart and assert that the names match', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
-        cart.getProductName(1)
-        let productName = cart.clickProductFromCart(1)
+        let nameFromCart = cart.getProductNameFromCart(1)
         cart.clickProductFromCart(1)
+        let nameFromProduct = product.getProductName()
+        assert.equal(nameFromCart, nameFromProduct)
     });
 
     it('should have a consistent description for product', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
-
+        let descriptionFromCart = cart.getProductDescriptionFromCart(1)
         cart.clickProductFromCart(1)
+        let descriptionFromProduct = product.getProductDescription()
+        assert.equal(descriptionFromCart, descriptionFromProduct)
     });
 
     it('should have a consistent price for product', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
-
+        let priceFromCart = cart.getProductPriceFromCart(1)
         cart.clickProductFromCart(1)
+        let priceFromProduct = product.getProductPrice()
+        assert.equal(priceFromCart, priceFromProduct)
     });
 
-    it('should logout, sign in and see same items in cart', () => {
+    it.skip('should logout, sign in and see same items in cart', () => {
         browser.url(`${browser.options.baseUrl}`)
         homePage.clickMenuButton(3)
         

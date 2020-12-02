@@ -4,10 +4,11 @@
 
 class Cart {
 
-    productFromCart(index) { return $(`.item .content .header a:nth-child(${index})`)}
+    productLink(index) { return $(`.ui.divided.items div:nth-child(${index}) .header a`) }
+    productName(index) { return $(`.ui.divided.items div:nth-child(${index}) .header`) }
+    productDescription(index) { return $(`.ui.divided.items div.item:nth-child(${index}) .description`) }
+    productPrice(index) { return $(`.ui.divided.items div.item:nth-child(${index}) .meta`)}
     get checkoutButton() { return $('.ui.large.clearing.segment button') }
-    get descriptionInCart() { return $('.item .content .description') }
-    get priceInCart() { return $('.item .content .meta')}
     get removeOne() { return $('.item .content button') }
     get removeAll() { return $$('.item .content button') }
     get checkoutModal() { return $('iframe.stripe_checkout_app') }
@@ -26,17 +27,35 @@ class Cart {
      * @param {Number} index the index of the element 
      */
     clickProductFromCart(index) {
-        this.productFromCart(index).waitForDisplayed();
-        this.productFromCart(index).click();
+        this.productLink(index).waitForDisplayed();
+        this.productLink(index).click();
     }
 
     /**
      * Retrieves the name of the product at the index given
      * @param {Number} index the index of the element 
      */
-    getProductName(index) {
-        this.productFromCart(index).waitForDisplayed();
-        this.productFromCart(index).getText();
+    getProductNameFromCart(index) {
+        this.productName(index).waitForDisplayed();
+        this.productName(index).getText();
+    }
+
+    /**
+     * Retrieves the description of the product at the index given
+     * @param {Number} index the index of the element 
+     */
+    getProductDescriptionFromCart(index) {
+        this.productDescription(index).waitForDisplayed();
+        this.productDescription(index).getText();
+    }
+
+    /**
+     * Retrieves the price of the product at the index given
+     * @param {Number} index the index of the element 
+     */
+    getProductPriceFromCart(index) {
+        this.productPrice(index).waitForDisplayed();
+        (this.productPrice(index).getText()).slice(3); //trying to cut out the quantity count and then return the price
     }
 
     /**
